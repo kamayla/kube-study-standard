@@ -9,6 +9,7 @@ sysctl -a | grep -E --color 'machdep.cpu.features|VMX'
 https://www.virtualbox.org/wiki/Downloads
 
 ### minikubeのインストール
+※今回は説明の便宜上v1.8.0を指定しています。
 ```
 curl -Lo minikube https://storage.googleapis.com/minikube/releases/v1.8.0/minikube-darwin-amd64 \
   && chmod +x minikube
