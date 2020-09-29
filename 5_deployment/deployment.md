@@ -17,3 +17,5 @@ kubectl rollout undo deploy helloworld
 ![](../asset/images/rollout.png)
 
 ローンチ（リリース）後の順次展開中のことをrolloutと言うようで、ようするにupdateって事です。
+
+つまり「kubernetesのdeploymentであるhelloworldの出化状況を元に戻す」と直訳することができます。

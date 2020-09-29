@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    run: helloworld-pvc
+  name: helloworld-pvc
+spec:
+  containers:
+  - image: gcr.io/google-samples/hello-app:1.0
+    name: helloworld-pvc
+    resources: {}
+    volumeMounts:
+    - name: my-pv
+      mountPath: /mnt/test
+  dnsPolicy: ClusterFirst
+  restartPolicy: Never
+  volumes:
+    - name: my-pv
+      persistentVolumeClaim:
+          claimName: pvc
+status: {}
