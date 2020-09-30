@@ -1,0 +1,54 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    run: laravel-study
+  name: laravel-study
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: laravel-study
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        run: laravel-study
+    spec:
+      containers:
+      - image: kamayla/laravel-study
+        name: laravel-study
+        ports:
+        - containerPort: 9000
+        envFrom:
+          - configMapRef:
+              name: laravel-study-config
+        resources:
+          limits:
+            cpu: 100m
+            memory: 100Mi
+          requests:
+            cpu: 30m
+            memory: 30Mi
+
+      - image: kamayla/nginx-study
+        name: nginx-study
+        ports:
+        - containerPort: 80
+        envFrom:
+          - configMapRef:
+              name: laravel-study-config
+        resources:
+          limits:
+            cpu: 100m
+            memory: 100Mi
+          requests:
+            cpu: 30m
+            memory: 30Mi
+      volumes:
+        - name: laravel-study-config
+          configMap:
+            name: laravel-study-config
+status: {}

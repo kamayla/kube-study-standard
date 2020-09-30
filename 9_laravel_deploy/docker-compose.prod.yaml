@@ -6,7 +6,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.php
-    image: laravel-study
+    image: kamayla/laravel-study
     networks:
     - laravel_study-network
 
@@ -14,7 +14,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.nginx
-    image: nginx-study
+    image: kamayla/nginx-study
     container_name: nginx-study
     ports:
     - 8080:80
