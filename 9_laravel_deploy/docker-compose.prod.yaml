@@ -1,0 +1,48 @@
+version: '3.7'
+
+services:
+  laravel-study:
+    container_name: laravel-study
+    build:
+      context: .
+      dockerfile: Dockerfile.php
+    image: laravel-study
+    networks:
+    - laravel_study-network
+
+  nginx-study:
+    build:
+      context: .
+      dockerfile: Dockerfile.nginx
+    image: nginx-study
+    container_name: nginx-study
+    ports:
+    - 8080:80
+    networks:
+    - laravel_study-network
+    depends_on:
+    - laravel-study
+
+  study-db:
+    image: mysql:5.7
+    container_name: study-db
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: database
+      MYSQL_USER: docker
+      MYSQL_PASSWORD: docker
+      TZ: 'Asia/Tokyo'
+    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    volumes:
+    - study_mysql_volume:/var/lib/mysql
+    ports:
+    - 4306:3306
+    networks:
+    - laravel_study-network
+
+networks:
+  laravel_study-network:
+    driver: bridge
+volumes:
+  study_mysql_volume:
+    driver: local

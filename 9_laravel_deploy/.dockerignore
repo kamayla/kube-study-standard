@@ -1,0 +1,14 @@
+.env
+.env.example
+.env.testing
+.gitattributes
+.gitignore
+/.idea/
+/.vscode/
+.docker-compose.yaml
+.docker-compose.prod.yaml
+/.github/
+/.circleci/
+Dockerfile.nginx
+Dockerfile.php
+
