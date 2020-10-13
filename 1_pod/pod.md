@@ -1,7 +1,7 @@
 # helloworldPodのYaml作成コマンド
 ```
 kubectl run \
---restart Never
+--restart Never helloworld \
 --image gcr.io/google-samples/hello-app:1.0 \
 --port 8080 \
 --dry-run \
