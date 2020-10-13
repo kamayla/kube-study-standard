@@ -1,6 +1,8 @@
 # k8s勉強会　基礎編
 ## セットアップ
-### localにVagrantが適応されているか確認
+### localにVMが適応されているか確認
+minikubeのシングルノードクラスターはVM上で起動されるので、ご用意をお願い致します。
+
 ```
 sysctl -a | grep -E --color 'machdep.cpu.features|VMX'
 ```
